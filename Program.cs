@@ -4,6 +4,7 @@ using Dapper;
 using HellowWorld.Data;
 using HellowWorld.Models;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
 namespace HellowWorld
 {
@@ -12,52 +13,70 @@ namespace HellowWorld
         static void Main(string[] args)
         {
 
-            DataContextDapper dataContextDapper = new DataContextDapper();
+            IConfiguration configuration = new ConfigurationBuilder()
+            .AddJsonFile("appSettings.json")
+            .Build();
+
+            DataContextDapper dataContextDapper = new DataContextDapper(configuration);
+            DataContextEF dataContextEF = new DataContextEF(configuration);
 
             string sqlCommand = "SELECT GETDATE()";
 
             DateTime dateTime = dataContextDapper.LoadDataSingle<DateTime>(sqlCommand);
           
 
-          
-
-
-
             Computer myComputer = new Computer(){
 
-                Users="HP",
-                Cpu  = 5 ,
+                Users="samsung",
+                Cpu  = 9 ,
                 Ram = 16,
-                VidioCard  = "HH55",
+                VideoCard  = "HH55",
                 HasLan = true
 
             };
+
+            dataContextEF.Add(myComputer);
+            dataContextEF.SaveChanges();
             
-            string sqlInsert = @"INSERT INTO TutorialAppSchema.Computer (Users, Cpu, Ram, HasLan, VideoCard) " +
-                              "VALUES ( '"+ myComputer.Users +"','"
-                                        + myComputer.Cpu +"','"
-                                        + myComputer.Ram +"','"
-                                        + myComputer.HasLan +"', '"
-                                        + myComputer.VidioCard +"')";
+            // string sqlInsert = @"INSERT INTO TutorialAppSchema.Computer (Users, Cpu, Ram, HasLan, VideoCard) " +
+            //                   "VALUES ( '"+ myComputer.Users +"','"
+            //                             + myComputer.Cpu +"','"
+            //                             + myComputer.Ram +"','"
+            //                             + myComputer.HasLan +"', '"
+            //                             + myComputer.VidioCard +"')";
 
 
-            string selectQuery = @"SELECT * FROM TutorialAppSchema.Computer";
+            // string selectQuery = @"SELECT * FROM TutorialAppSchema.Computer";
 
-            bool res = dataContextDapper.ExecuteSql(sqlInsert);
+            // bool res = dataContextDapper.ExecuteSql(sqlInsert);
 
-            int result = dataContextDapper.ExecuteSqlInt(sqlInsert);
+            // int result = dataContextDapper.ExecuteSqlInt(sqlInsert);
 
-            IEnumerable<Computer> computers = dataContextDapper.LoadData<Computer>(selectQuery);
+            // IEnumerable<Computer> computers = dataContextDapper.LoadData<Computer>(selectQuery);
 
-                foreach(Computer single in computers ){
-                Console.WriteLine(single.Ram);
+            //     foreach(Computer single in computers ){
+            //     Console.WriteLine(single.Ram);
+            //     }
+
+
+
+
+            IEnumerable<Computer>? computers = dataContextEF.Computer?.ToList<Computer>();
+
+            if (computers != null)
+            {
+                foreach (Computer single in computers)
+                {
+                    Console.WriteLine(single.Users);
                 }
+
+            }
 
 
 
             Console.WriteLine(dateTime);
-            Console.WriteLine(res);
-            Console.WriteLine(result);
+            // Console.WriteLine(res);
+            // Console.WriteLine(result);
 
 
 

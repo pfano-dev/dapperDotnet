@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\gerru\\OneDrive\\Desktop\\Code\\test\\hellow-world\\hellow-world.csproj": {}
+    "C:\\Users\\gerru\\OneDrive\\Desktop\\Code\\test\\hellow-world\\hellow-world.csproj": {}
   },
   "projects": {
-    "c:\\Users\\gerru\\OneDrive\\Desktop\\Code\\test\\hellow-world\\hellow-world.csproj": {
+    "C:\\Users\\gerru\\OneDrive\\Desktop\\Code\\test\\hellow-world\\hellow-world.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\gerru\\OneDrive\\Desktop\\Code\\test\\hellow-world\\hellow-world.csproj",
+        "projectUniqueName": "C:\\Users\\gerru\\OneDrive\\Desktop\\Code\\test\\hellow-world\\hellow-world.csproj",
         "projectName": "hellow-world",
-        "projectPath": "c:\\Users\\gerru\\OneDrive\\Desktop\\Code\\test\\hellow-world\\hellow-world.csproj",
+        "projectPath": "C:\\Users\\gerru\\OneDrive\\Desktop\\Code\\test\\hellow-world\\hellow-world.csproj",
         "packagesPath": "C:\\Users\\gerru\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\gerru\\OneDrive\\Desktop\\Code\\test\\hellow-world\\obj\\",
+        "outputPath": "C:\\Users\\gerru\\OneDrive\\Desktop\\Code\\test\\hellow-world\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -55,6 +55,14 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[7.0.11, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "microsoft.data.sqlclient": {
               "target": "Package",
